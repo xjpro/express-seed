@@ -11,8 +11,8 @@ gulp.task('default', ['build']);
 
 gulp.task('build', [
 	'clean',
-	'bundle-js',
 	'move-assets',
+	'bundle-js',
 	'sass'
 ]);
 
