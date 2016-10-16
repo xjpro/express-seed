@@ -2,10 +2,10 @@ var gulp = require('gulp');
 var fs = require('fs-extra');
 var path = require('path');
 
-var babel = require('gulp-babel');
 var concat = require('gulp-concat');
 var sourceMaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
+var react = require('gulp-react');
 
 gulp.task('default', ['build']);
 
@@ -18,7 +18,7 @@ gulp.task('build', [
 
 gulp.task('watch', ['build'], () => {
 	gulp.watch('./assets/**/*.scss', ['sass']); // watch sass changes
-	gulp.watch(['./app/**/*.js', '!./app/**/*.spec.js'], ['bundle-js']); // watch app js changes
+	gulp.watch(['./app/**/*.js*', '!./app/**/*.spec.js'], ['bundle-js']); // watch app js changes
 });
 
 gulp.task('clean', cb => {
@@ -35,9 +35,11 @@ gulp.task('move-assets', ['clean'], () => {
 });
 
 gulp.task('bundle-js', () => {
-	return gulp.src(['./app/**/*.js', '!./app/**/*.spec.js'])
-		.pipe(babel({presets: ['es2015']}))
-		.pipe(concat('app.js'))
+	return gulp.src(['./app/**/*.js*', '!./app/**/*.spec.js'])
+		.pipe(sourceMaps.init())
+		.pipe(react())
+		.pipe(sourceMaps.write())
+		.pipe(concat('app-bundle.js'))
 		.pipe(gulp.dest('./dist'));
 });
 
