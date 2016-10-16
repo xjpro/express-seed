@@ -10,6 +10,11 @@ app.set('view engine', 'ejs');
 app.set('views', './server/views');
 app.use(bodyParser.json());
 
+// Enable responses
+app.use(require('../responses/serverError'));
+app.use(require('../responses/ok'));
+app.use(require('../responses/invalid'));
+
 // setup routes
 require('./routes').http(app);
 require('./routes').socket(app);
