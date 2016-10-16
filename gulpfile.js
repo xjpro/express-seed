@@ -37,7 +37,7 @@ gulp.task('move-assets', ['clean'], () => {
 gulp.task('bundle-js', () => {
 	return gulp.src(['./app/**/*.js', '!./app/**/*.spec.js'])
 		.pipe(babel({presets: ['es2015']}))
-		.pipe(concat('app.js'))
+		.pipe(concat('app-bundle.js'))
 		.pipe(gulp.dest('./dist'));
 });
 
