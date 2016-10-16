@@ -29,16 +29,16 @@ gulp.task('clean-sass', cb => {
 	fs.remove(path.join(__dirname, 'dist', 'style.css'), cb);
 });
 
+gulp.task('move-assets', ['clean'], () => {
+	return gulp.src(['./assets/fonts/**/*.*','./assets/images/*.*'])
+		.pipe(gulp.dest('dist'));
+});
+
 gulp.task('bundle-js', () => {
 	return gulp.src(['./app/**/*.js', '!./app/**/*.spec.js'])
 		.pipe(babel({presets: ['es2015']}))
 		.pipe(concat('app.js'))
 		.pipe(gulp.dest('./dist'));
-});
-
-gulp.task('move-assets', ['clean'], () => {
-	return gulp.src(['./assets/fonts/**/*.*','./assets/images/*.*'])
-		.pipe(gulp.dest('dist'));
 });
 
 gulp.task('sass', ['clean-sass'], () => {
