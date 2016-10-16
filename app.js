@@ -4,11 +4,12 @@ process.chdir(__dirname);
 global._ = require('lodash');
 global.Promise = require('bluebird');
 
-var config = require('./server/config/config.js');
+var config = require('./server/config/config');
+var mongoose = require('mongoose');
+mongoose.Promise = Promise;
+
 var app = Promise.promisifyAll(require('./server/config/express'));
 var server = Promise.promisifyAll(require('http').Server(app));
-var mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
 
 console.log(`server\t starting in ${config.environment} mode...`);
 
