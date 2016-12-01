@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 // Enable responses
 app.use(require('../responses/serverError'));
 app.use(require('../responses/ok'));
-app.use(require('../responses/invalid'));
+app.use(require('../responses/badRequest'));
 
 // setup routes
 require('./routes').http(app);
