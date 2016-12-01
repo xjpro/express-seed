@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
-var config = require('./config');
+var config = require('../config');
 
 // put publicly accessible directories here
 app.use('/dist', express.static('dist'));

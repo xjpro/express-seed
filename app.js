@@ -4,7 +4,7 @@ process.chdir(__dirname);
 global._ = require('lodash');
 global.Promise = require('bluebird');
 
-var config = require('./server/config/config');
+var config = require('./server/config');
 var mongoose = require('mongoose');
 mongoose.Promise = Promise;
 
