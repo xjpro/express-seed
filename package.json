@@ -20,6 +20,7 @@
     "express": "^4.14.0",
     "express-session": "^1.14.2",
     "lodash": "^4.16.4",
+<<<<<<<<< Temporary merge branch 1
     "mongoose": "^4.6.3",
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
