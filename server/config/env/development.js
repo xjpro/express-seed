@@ -8,7 +8,7 @@ module.exports = {
 	},
 	db: {
 		host: 'localhost',
-		name: 'booking-agent',
+		name: 'express-seed',
 		port: '27017'
 	}
 };
