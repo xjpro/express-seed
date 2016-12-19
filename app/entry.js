@@ -1,0 +1,11 @@
+// Include SASS styling
+require('../assets/style/base.scss');
+
+import React from 'react';
+import ReactDOM  from 'react-dom';
+import App from './App.jsx';
+
+ReactDOM.render(
+	React.createElement(App, null),
+	document.getElementById('app')
+);
