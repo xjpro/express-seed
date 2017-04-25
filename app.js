@@ -4,16 +4,16 @@ process.chdir(__dirname);
 global._ = require('lodash');
 global.Promise = require('bluebird');
 
-var config = require('./server/config');
-var mongoose = require('mongoose');
+const config = require('./server/config');
+const mongoose = require('mongoose');
 mongoose.Promise = Promise;
 
-var app = Promise.promisifyAll(require('./server/config/express'));
-var server = Promise.promisifyAll(require('http').Server(app));
+const app = Promise.promisifyAll(require('./server/config/express'));
+const server = Promise.promisifyAll(require('http').Server(app));
 
 console.log(`server\t starting in ${config.environment} mode...`);
 
-var databaseUrl = `mongodb://${config.db.host}:${config.db.port}/${config.db.name}`;
+const databaseUrl = `mongodb://${config.db.host}:${config.db.port}/${config.db.name}`;
 mongoose.connect(databaseUrl)
 	.then(() => {
 		console.log(`db\t\t connected at mongodb://${config.db.host}:${config.db.port}/${config.db.name}`);

@@ -1,4 +1,4 @@
-var viewController = require('../controllers/viewController');
+const viewController = require('../controllers/viewController');
 
 module.exports.http = (app) => {
 	app.get('/', viewController.index);

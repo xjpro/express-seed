@@ -1,22 +1,20 @@
 // check the command line options for a -env=someEnvironment
-var environment = _(process.argv)
-	.map(item => {
+const environment = _(process.argv)
+		.map(item => {
 
-		// unfortunately mocha mangles the env=something, so using regex to check both
-		// ex:
-		// -env-integration-testing
-		// -env=integration-testing
-		var match = /-env(?:-|=)((?:\w|-)+)/gi.exec(item);
-		if (match && match[1]) {
-			return match[1];
-		}
-	})
-	.compact()
-	.first();
+			// unfortunately mocha mangles the env=something, so using regex to check both
+			// ex:
+			// -env-integration-testing
+			// -env=integration-testing
+			const match = /-env(?:-|=)((?:\w|-)+)/gi.exec(item);
+			if (match && match[1]) {
+				return match[1];
+			}
+		})
+		.compact()
+		.first() || process.env.NODE_ENV || 'development';
 
-environment = environment || process.env.NODE_ENV || 'development';
-
-var config = require('./env/' + environment);
+const config = require('./env/' + environment);
 
 config.isLocal = (req) => {
 	return req.connection.remoteAddress === '127.0.0.1'

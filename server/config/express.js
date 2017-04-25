@@ -1,10 +1,10 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
-var config = require('../config');
+const config = require('../config');
 
 // put publicly accessible directories here
 app.use('/dist', express.static('dist'));
